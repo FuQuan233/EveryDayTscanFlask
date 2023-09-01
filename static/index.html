@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+	<head>
+		<meta charset="utf-8">
+		<title>静态检查</title>
+		<link rel="stylesheet" type="text/css" href="/static/Bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/static/BootstrapTable/bootstrap-table.min.css">
+
+		<link rel="stylesheet" type="text/css" href="/main.css">
+		<script type="text/javascript" src="/static/jquery/jquery-3.7.0.min.js"></script>
+		<script type="text/javascript" src="/static/Bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/static/BootstrapTable/bootstrap-table.min.js"></script>
+		<script type="text/javascript" src="/static/Vuejs/vue.min.js"></script>
+		<script type="text/javascript" src="/static/Axios/axios.min.js"></script>
+	</head>
+	<body>
+
+		<div class="container-fluid">
+			<nav class="navbar fixed-top navbar-expand navbar-dark bg-dark" aria-label="Second navbar example" style="z-index: 1000;">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#" id="maintitle">静态检查</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02"
+						aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+			
+					<div class="collapse navbar-collapse" id="navbarsExample02">
+						<ul class="navbar-nav me-auto" id="option">
+							<li class="nav-item">
+								<a id="zuori" class="nav-link active" aria-current="page" href="#"
+									v-on:click="makeSelect(1)">昨日新增</a>
+							</li>
+							<li class="nav-item">
+								<a id="quanbu" class="nav-link" href="#" v-on:click="makeSelect(2)">全部</a>
+							</li>
+						</ul>
+			
+						<ul class="pagination" id="pag">
+							<li>
+								<a type="button" v-bind:class="disable==1||disable==3?'btn disabled disbtn btn-dark':'btn btn-secondary'" href="#"
+									v-on:click="selectDate(-1)">Prev</a>
+							</li>
+							<li>
+								<a type="button" class="btn disabled" href="#">[[date]]</a>
+							</li>
+							<li>
+								<a type="button" v-bind:class="disable==2||disable==3?'btn disabled disbtn btn-dark':'btn btn-secondary'" href="#"
+									v-on:click="selectDate(1)">Next</a>
+							</li>
+						</ul>
+			
+					</div>
+				</div>
+			</nav>
+
+			<!-- <div class="fixed-top" style="z-index: 30;">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col" class="sortable" width="50">序号</th>
+							<th scope="col" class="sortable" width="90">级别</th>
+							<th scope="col" class="sortable" width="350">文件</th>
+							<th>异常</th>
+						</tr>
+					</thead>
+				</table>
+			</div> -->
+
+			<div id="result" v-cloak style="z-index: 0;">
+				<table id="tabletable" data-toggle="table" class="table table-hover" data-sortable="true">
+					<thead>
+						<tr>
+							<th data-field="id" data-sortable="true">id</th>
+							<th data-field="level" data-sortable="true" data-sorter="dangerLevelSorter" data-cell-style="cellStyle">级别</th>
+							<th data-field="owner" data-sortable="true" data-cell-style="normalcellStyle">负责人</th>
+							<th data-field="file" data-sortable="true" data-cell-style="normalcellStyle">文件</th>
+							<th data-field="errortype" data-sortable="true" data-cell-style="normalcellStyle">错误类型</th>
+							<th data-field="errorinfo" data-cell-style="normalcellStyle">错误信息</th>
+							<th data-field="msg" data-cell-style="normalcellStyle">异常</th>
+							<th data-field="option" data-formatter="operateFormatter" data-events="operateEvents" data-cell-style="normalcellStyle">操作</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<script type="text/javascript" src="/main.js"></script>
+		</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="codeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">代码详情</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<pre>
+					<div class="modal-body"><code id="dialog-text"></code></div>
+				</pre>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>

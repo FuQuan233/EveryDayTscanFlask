@@ -1,0 +1,10 @@
+{
+    "title":"静态检查",
+    "port":9100,
+    "scan_time":"2:00",
+    "code_path":"/path/to/your/code",
+    "mysql_host":"10.0.1.193",
+    "mysql_database":"everydaytscan",
+    "mysql_user":"root",
+    "mysql_password":"yourpassword"
+}

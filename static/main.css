@@ -1,0 +1,47 @@
+.mybtn
+{
+	padding-left:0px;
+	cursor: default;
+}
+
+/* .mybtn:active
+{
+	box-shadow: none;
+} */
+
+.table
+{
+	margin-top:70px;
+	/* table-layout: fixed; */
+}
+
+.btnfix
+{
+	width: 80px
+}
+
+.pagination
+{
+	margin-top:0px;
+	margin-left:20px;
+}
+
+/* .pagination li a
+{
+	color:#6e6e6e;
+} */
+
+/* .pagination > li > a:focus
+{
+	background-color:#818181;
+} */
+
+.margintop
+{
+	margin-top:30px;
+}
+
+[v-cloak]
+{
+	display: none !important;
+}
